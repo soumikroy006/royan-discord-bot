@@ -2,18 +2,18 @@ import discord
 from discord.ext import commands
 from datetime import datetime, timezone
 
-# 🔹 INTENTS (IMPORTANT)
+
 intents = discord.Intents.default()
 intents.members = True
 
 bot = commands.Bot(command_prefix="!", intents=intents)
 
-# 🔹 🔧 PUT YOUR CHANNEL ID HERE
-WELCOME_CHANNEL_ID = 1498372548579299469  # 🔁 Replace this
 
-# 🔹 Helper: Account Age (FIXED)
+WELCOME_CHANNEL_ID = 12345678909874563210  
+
+
 def get_account_age(created_at):
-    now = datetime.now(timezone.utc)  # ✅ FIXED
+    now = datetime.now(timezone.utc)  
     delta = now - created_at
 
     days = delta.days
@@ -26,10 +26,10 @@ def get_account_age(created_at):
 async def on_ready():
     print(f"🔥 Royan is ONLINE as {bot.user}")
 
-# 🔹 ✅ MEMBER JOIN
+
 @bot.event
 async def on_member_join(member):
-    print(f"JOIN DETECTED: {member}")  # DEBUG
+    print(f"JOIN DETECTED: {member}")  
 
     channel = bot.get_channel(WELCOME_CHANNEL_ID)
 
@@ -41,7 +41,7 @@ async def on_member_join(member):
         title="✨ Welcome to the Server!",
         description=f"Hey {member.mention}, welcome to **{member.guild.name}** 🎉",
         color=discord.Color.green(),
-        timestamp=datetime.now(timezone.utc)  # ✅ FIXED
+        timestamp=datetime.now(timezone.utc)  
     )
 
     avatar = member.avatar.url if member.avatar else member.default_avatar.url
@@ -76,10 +76,10 @@ async def on_member_join(member):
 
     await channel.send(embed=embed)
 
-# 🔹 ❌ MEMBER LEAVE
+
 @bot.event
 async def on_member_remove(member):
-    print(f"LEAVE DETECTED: {member}")  # DEBUG
+    print(f"LEAVE DETECTED: {member}") 
 
     channel = bot.get_channel(WELCOME_CHANNEL_ID)
 
@@ -91,7 +91,7 @@ async def on_member_remove(member):
         title="💔 Member Left",
         description=f"**{member.name}** has left the server...",
         color=discord.Color.red(),
-        timestamp=datetime.now(timezone.utc)  # ✅ FIXED
+        timestamp=datetime.now(timezone.utc)  
     )
 
     avatar = member.avatar.url if member.avatar else member.default_avatar.url
@@ -131,5 +131,5 @@ async def on_member_remove(member):
 
     await channel.send(embed=embed)
 
-# 🔹 RUN BOT
+
 bot.run("MTQ5ODM0ODQ2MDQ1NjU0NjM3Ng.Gg3MZG.jA4PzasSCRp_kuFBnkKBz__QBrH90N29Yb_Qfg")
