@@ -132,4 +132,4 @@ async def on_member_remove(member):
     await channel.send(embed=embed)
 
 
-bot.run("MTQ5ODM0ODQ2MDQ1NjU0NjM3Ng.Gg3MZG.jA4PzasSCRp_kuFBnkKBz__QBrH90N29Yb_Qfg")
+bot.run("YOUR_BOT_TOKEN")
